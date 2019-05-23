@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<a href="/auth/github">
+<a href="/login/github">
     Log In With Github
 </a>
 </body>

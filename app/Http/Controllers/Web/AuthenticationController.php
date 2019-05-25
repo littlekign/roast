@@ -46,7 +46,9 @@ class AuthenticationController extends Controller
                 'provider_id' => $userSocial->getId(),
                 'provider' => $provider,
             ]);
-            return redirect('/');
+            //modify
+            return redirect('/#/home');
+//            return redirect('/');
         }
     }
 }

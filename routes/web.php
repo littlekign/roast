@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 // use Socialite;
 
@@ -30,4 +32,4 @@ Route::get('/p', function ($provider) {
 //     // return view('welcome');
 // });
 
-Route::get('/home', 'HomeController@index')->name('home');
+

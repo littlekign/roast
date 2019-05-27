@@ -26,26 +26,49 @@ class AuthenticationController extends Controller
     public function getSocialCallback($provider)
     {
         // $socialUser = Socialite::with($account)->user();
-        // $userSocial = Socialite::driver($provider)->user();
-        $userSocial = Socialite::driver($provider)->stateless()->user();
-        // dd($userSocial->getAvatar());
+         $userSocial = Socialite::driver($provider)->user();
+//        $userSocial = Socialite::driver($provider)->stateless()->user();
+//         dd($userSocial);
+//         dd($provider);
 
         //if user has login record of users table
         $users = User::where(['email' => $userSocial->getEmail()])->first();
-        // dd($users);
+//         dd($users);
 
         if ($users) {
             Auth::login($users);
-            return redirect('/');
+            return redirect('/#/home');
         } else {
-            $user = User::create([
-                'name' => $userSocial->getName(),
-                'email' => $userSocial->getEmail(),
-                'avatar' => $userSocial->getAvatar(),
-                'password' => '',
-                'provider_id' => $userSocial->getId(),
-                'provider' => $provider,
-            ]);
+//            $test = array(
+//                'name' => $userSocial->getName(),
+//                'email'=>$userSocial->getEmail(),
+//                'avatar' => $userSocial->getAvatar(),
+//                'password' => '',
+//                'provider' => $provider,
+//                'provider_id' => $userSocial->getId(),
+//            );
+
+            $user = new User;
+            $user->name = $userSocial->getName();
+            $user->email = $userSocial->getEmail();
+            $user->avatar = $userSocial->getAvatar();
+            $user->password = '';
+            $user->provider = $provider;
+            $user->provider_id = $userSocial->getId();
+//            dd($user);
+            $user->save();
+
+//            dd($test);
+//            $user = User::create($test);
+
+//            $user = User::create([
+//                'name' => $userSocial->getName(),
+//                'email' => $userSocial->getEmail(),
+//                'avatar' => $userSocial->getavatar(),
+//                'password' => '',
+//                'provider' => $provider,
+//                'provider_id' => $userSocial->getId(),
+//            ]);
             //modify
             return redirect('/#/home');
 //            return redirect('/');

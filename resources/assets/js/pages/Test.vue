@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Cafe</h1>
+        <h1>test vuejs vuerouter import ...</h1>
 
     </div>
 </template>

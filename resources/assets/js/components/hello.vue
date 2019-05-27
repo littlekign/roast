@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h1>Cafe</h1>
-
+        <h1>hello vue</h1>
+        <h1>fuck you vue</h1>
     </div>
 </template>
 

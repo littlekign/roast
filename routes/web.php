@@ -23,6 +23,8 @@ Route::get('/login/{provider}', 'Web\AuthenticationController@getSocialRedirect'
 
 Route::get('/login/{provider}/callback', 'Web\AuthenticationController@getSocialCallback')->middleware('guest');
 
+Route::get('logout','Web\AppController@getLogout')->name('logout');
+
 Route::get('/p', function ($provider) {
     $socialUser = Socialite::with($provider)->user();
     return $socialUser;

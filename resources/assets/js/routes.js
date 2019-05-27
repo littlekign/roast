@@ -21,6 +21,9 @@ Vue.use(VueRouter);
 export default new VueRouter({
     routes: [
         {
+            // path:'/',
+            // name:'test',
+            // component: Vue.component( 'Test', require( './pages/Test.vue' ) ),
             path: '/',
             name: 'layout',
             component: Vue.component( 'Home', require( './pages/Layout.vue' ) ),
@@ -28,27 +31,27 @@ export default new VueRouter({
                 {
                     path: 'home',
                     name: 'home',
-                    component: Vue.component( 'Home', require( './pages/Home.vue' ) )
+                    component: Vue.component( 'Home', require( './pages/Home.vue' ).default ),
                 },
                 {
                     path: 'cafes',
                     name: 'cafes',
-                    component: Vue.component( 'Cafes', require( './pages/Cafes.vue' ) ),
+                    component: Vue.component( 'Cafes', require( './pages/Cafes.vue' ).default ),
                 },
                 {
                     path: 'cafes/new',
-                    name: 'newcafe',
-                    component: Vue.component( 'NewCafe', require( './pages/NewCafe.vue' ) )
+                    name: 'newCafe',
+                    component: Vue.component( 'NewCafe', require( './pages/NewCafe.vue' ) ),
                 },
                 {
                     path: 'cafes/:id',
                     name: 'cafe',
-                    component: Vue.component( 'Cafe', require( './pages/Cafe.vue' ) )
+                    component: Vue.component( 'Cafe', require( './pages/Cafe.vue' ).default )
                 }
             ]
         }
     ]
-})
+});
 
 // version 1 defines the routes
 // export default  new VueRouter({

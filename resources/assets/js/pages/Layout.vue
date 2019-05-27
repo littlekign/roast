@@ -1,7 +1,8 @@
 <template>
     <div class="app-layout">
-        <Navigation></Navigation>
+        <navigation></navigation>
         <router-view></router-view>
+        <!--<h1>hi i'm the layout component</h1>-->
     </div>
 </template>
 

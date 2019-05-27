@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h1>Cafes</h1>
 
     </div>
 </template>

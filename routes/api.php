@@ -14,33 +14,37 @@ use Illuminate\Http\Request;
 */
 
 
+
+// public route can be access without login
+Route::group(['prefix'=>'v1'],function (){
+    /*
+     |-------------------------------------------------------------------------------
+     | Get All Cafes
+     |-------------------------------------------------------------------------------
+     | URL:            /api/v1/cafes
+     | Controller:     API\CafesController@getCafes
+     | Method:         GET
+     | Description:    Gets all of the cafes in the application
+    */
+    Route::get('/cafes','API\CafesController@getCafes');
+    /*
+       |-------------------------------------------------------------------------------
+       | Get An Individual Cafe
+       |-------------------------------------------------------------------------------
+       | URL:            /api/v1/cafes/{id}
+       | Controller:     API\CafesController@getCafe
+       | Method:         GET
+       | Description:    Gets an individual cafe
+      */
+    Route::get('/cafe/{id}','API\CafesController@getCafe');
+
+});
+
 Route::group(['prefix'=>'v1','middleware'=>'auth:api'],function (){
     Route::get('/user',function (Request $request){
         return $request->user();
     });
-
-});
-/*
-    |-------------------------------------------------------------------------------
-    | Get All Cafes
-    |-------------------------------------------------------------------------------
-    | URL:            /api/v1/cafes
-    | Controller:     API\CafesController@getCafes
-    | Method:         GET
-    | Description:    Gets all of the cafes in the application
-   */
-Route::get('/cafes','API\CafesController@getCafes');
-/*
-   |-------------------------------------------------------------------------------
-   | Get An Individual Cafe
-   |-------------------------------------------------------------------------------
-   | URL:            /api/v1/cafes/{id}
-   | Controller:     API\CafesController@getCafe
-   | Method:         GET
-   | Description:    Gets an individual cafe
-  */
-Route::get('/cafe/{id}','API\CafesController@getCafe');
-/*
+    /*
   |-------------------------------------------------------------------------------
   | Adds a New Cafe
   |-------------------------------------------------------------------------------
@@ -49,7 +53,11 @@ Route::get('/cafe/{id}','API\CafesController@getCafe');
   | Method:         POST
   | Description:    Adds a new cafe to the application
  */
-Route::post('/cafes','API\CafesController@postNewCafe');
+    Route::post('/cafes','API\CafesController@postNewCafe');
+
+});
+
+
 
 
 
